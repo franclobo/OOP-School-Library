@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.0'
-gem 'rack-cache', :require => 'rack/cache'
-gem 'nokogiri', '~> 1.4.2'
+gem 'nokogiri'
+gem 'rails', '3.0.0.beta3'
+gem 'rack',  '>=1.0'
+gem 'thin',  '~>1.1'
 gem 'rubocop', '>= 1.0', '< 2.0'
