@@ -16,6 +16,16 @@ Imagine that you are the librarian of OOP University, and you need a tool to rec
 - Add new books.
 - Save records of who borrowed a given book and when.
 
+## Installation
+
+Clone this repository:
+
+`git@github.com:franclobo/OOP-School-Library.git`
+
+Enter in ypur terminal:
+
+`main`
+
 ## Author
 
 ## 👤 Francisco Borja
