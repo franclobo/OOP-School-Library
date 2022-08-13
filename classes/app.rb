@@ -1,3 +1,4 @@
+require 'pry'
 # Import the modules needed to run the application
 require_relative './book'
 require_relative './student'
@@ -8,8 +9,6 @@ require_relative './rental'
 # This is the main class of the application
 # It will be responsible for the flow of the application
 class App
-  # Getters and setters
-  attr_accessor :people, :books, :rented
 
   def initialize
     @books = []
@@ -156,3 +155,4 @@ class App
     end
   end
 end
+binding.pry
