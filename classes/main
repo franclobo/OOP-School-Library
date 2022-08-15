@@ -1,6 +1,50 @@
 #!/usr/bin/env ruby
 require_relative './app'
 
+# Select an option
+  def select_option(option)
+    case option
+    when 1
+      list_of_books(books)
+    when 2
+      list_of_people(people)
+    when 3
+      data = create_person
+      @people << data
+    when 4
+      book = create_book
+      @books << book
+    when 5
+      rental = create_rental(books, people)
+      @rented << rental
+    when 6
+      list_of_rentals(rented)
+    else
+      puts 'invalid option'
+    end
+  end
+
+  # Define the method to see the user interface
+  def interface
+    exit = 0
+    print("          Welcome to School Library App! \n")
+    while exit.zero?
+      print("
+          Please choose an option by entering a number: \n
+          1 - List all books
+          2 - List all people
+          3 - Create a person
+          4 - Create a book
+          5 - Create a rental
+          6 - List all rentals for a given person id
+          7 - Exit \n
+          ")
+      option = gets.chomp.to_i
+      option == 7 ? exit = 1 : select_option(option)
+    end
+    print "          Thanks for using the app! \n"
+  end
+
 def main
   app = App.new
   app.interface
