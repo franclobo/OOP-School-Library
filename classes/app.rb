@@ -2,6 +2,7 @@
 require_relative './book'
 require_relative './student'
 require_relative './teacher'
+require_relative './person'
 require_relative './rental'
 
 # Create the app
@@ -14,7 +15,7 @@ class App
   def initialize
     @books = []
     @people = []
-    @rentals = []
+    @rented = []
   end
 
   # Select an option
@@ -107,10 +108,12 @@ class App
     age = gets.chomp.to_i
     print "Insert Name:\s"
     name = gets.chomp
+    print "Insert classroom:\s"
+    classroom = gets.chomp
     print "Has parent permission [Y/N]?\s"
     permission = gets.chomp.capitalize
     permission = permission == 'Y'
-    { age: age, name: name, permission: permission }
+    { age: age, name: name, classroom: classroom, permission: permission }
   end
 
   # Define the method to create a teacher, option 3.2
@@ -141,7 +144,7 @@ class App
     person_num = gets.chomp.to_i
     print("Insert a date [DD-MM-YYYY]: \s")
     date = gets.chomp
-    rental = Rental.new(people[person_num], books[book_num], date)
+    rental = Rental.new(date, people[person_num], books[book_num])
     print 'Rental created succesfully'
     rental
   end
