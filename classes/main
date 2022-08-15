@@ -2,23 +2,24 @@
 require_relative './app'
 
 # Select an option
+class Main < App
   def select_option(option)
     case option
     when 1
-      list_of_books(books)
+      App.new.list_of_books(books)
     when 2
-      list_of_people(people)
+      App.new.list_of_people(people)
     when 3
-      data = create_person
+      data = App.new.create_person
       @people << data
     when 4
-      book = create_book
+      book = App.new.create_book
       @books << book
     when 5
-      rental = create_rental(books, people)
+      rental = App.new.create_rental(books, people)
       @rented << rental
     when 6
-      list_of_rentals(rented)
+      App.new.list_of_rentals(rented)
     else
       puts 'invalid option'
     end
@@ -44,9 +45,10 @@ require_relative './app'
     end
     print "          Thanks for using the app! \n"
   end
+end
 
 def main
-  app = App.new
+  app = Main.new
   app.interface
 end
 
