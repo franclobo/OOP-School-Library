@@ -1,3 +1,4 @@
+require 'json'
 require_relative './person'
 
 class Student < Person
@@ -6,6 +7,13 @@ class Student < Person
   def initialize(age:, classroom:, name: 'Unknow', parent_permission: true)
     super(age: age, name: name, parent_permission: parent_permission)
     @classroom = classroom
+  end
+
+  def save
+    self_json = [{age: @age, classroom: @classroom, name: @name, parent_permission: true}].to_json
+    open('./store/people.json', 'a') do |file|
+      file.puts self_json
+    end
   end
 
   def play_hooky

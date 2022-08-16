@@ -12,7 +12,7 @@ class Book
     @rentals << rental unless @rentals.include?(rental)
   end
 
-  def  to_jason(*arg)
+  def to_jason(*arg)
     {
       JSON.create_id => self.class.name,
       'a' => [title, author, rentals]

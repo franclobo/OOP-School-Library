@@ -1,3 +1,4 @@
+require 'json'
 require_relative './person'
 
 class Teacher < Person
@@ -10,5 +11,12 @@ class Teacher < Person
 
   def can_use_services?
     true
+  end
+
+  def save
+    self_json = [{age: @age, specialization: @specialization, name: @name, parent_permission: true}].to_json
+    open('./store/people.json', 'a') do |file|
+      file.puts self_json
+    end
   end
 end
