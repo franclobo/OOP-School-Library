@@ -13,10 +13,20 @@ class Teacher < Person
     true
   end
 
-  def save
-    self_json = [{age: @age, specialization: @specialization, name: @name, parent_permission: true}].to_json
-    open('./store/people.json', 'a') do |file|
-      file.puts self_json
-    end
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'age' => age,
+      'specialization' => specialization,
+      'name' => name,
+      'parent_permission' => @parent_permission,
+      'id' => id
+    }.to_json(*args)
+  end
+
+  def self.json_create(teacher)
+    person = new(teacher['age'], teacher['specialization'], teacher['name'], teacher['parent_permission'])
+    person.id = teacher['id']
+    person
   end
 end

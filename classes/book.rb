@@ -12,16 +12,16 @@ class Book
     @rentals << rental unless @rentals.include?(rental)
   end
 
-  def to_jason(*arg)
+  def to_json(*arg)
     {
       JSON.create_id => self.class.name,
-      'a' => [title, author, rentals]
+      'title' => title,
+      'author' => author
     }.to_json(*arg)
   end
 
-  def self.json_create(object)
-    book = new(object['a'][0], object['a'][1])
-    book.rentals = object['a'][2]
-    book
+  def self.json_create(book)
+    libro = new(book['title'], book['author'])
+    libro
   end
 end

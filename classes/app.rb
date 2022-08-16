@@ -1,4 +1,5 @@
 # Import the modules needed to run the application
+require 'json'
 require_relative './book'
 require_relative './student'
 require_relative './teacher'
@@ -57,7 +58,7 @@ class App
           7 - Exit \n
           ")
       option = gets.chomp.to_i
-      option == 7 ? exit = 1 : select_option(option)
+      option == 7 ? exit = 1 && save : select_option(option)
     end
     print "          Thanks for using the app! \n"
   end
@@ -157,5 +158,11 @@ class App
     rented.map do |rental|
       puts "#{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
     end
+  end
+
+  def save
+    File.write('.././store/books.json', JSON.pretty_generate(@books))
+    File.write('.././store/people.json', JSON.pretty_generate(@people))
+    File.write('.././store/rentals.json', JSON.pretty_generate(@rented))
   end
 end
