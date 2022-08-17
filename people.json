@@ -1,0 +1,22 @@
+[
+  {
+    "json_class": "Student",
+    "a": [
+      null,
+      81,
+      "Anna",
+      21,
+      true,
+      [
+        {
+          "json_class": "Rental",
+          "a": [
+            "16-08-2022",
+            81,
+            "Rich Dad Poor Dad"
+          ]
+        }
+      ]
+    ]
+  }
+]

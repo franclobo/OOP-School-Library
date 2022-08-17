@@ -13,10 +13,18 @@ class App
   # Getters and setters
   attr_accessor :people, :books, :rented
 
-  def initialize
-    @books = []
-    @people = []
-    @rented = []
+  def initialize()
+    @list = []
+    @books = File.exist?('./books.json') ? JSON.parse(File.read('./books.json'), create_aditions: true) : []
+    @people = File.exist?('./people.json') ? JSON.parse(File.read('./people.json'), create_aditions: true) : []
+    @rented = if File.exist?('./rented.json')
+                JSON.parse(File.read('./rented.json'),
+                           create_aditions: true).map do |rental|
+                  load(rental)
+                end
+              else
+                []
+              end
   end
 
   # Select an option
@@ -161,8 +169,14 @@ class App
   end
 
   def save
-    File.write('.././store/books.json', JSON.pretty_generate(@books))
-    File.write('.././store/people.json', JSON.pretty_generate(@people))
-    File.write('.././store/rentals.json', JSON.pretty_generate(@rented))
+    File.write('./books.json', JSON.pretty_generate(@books))
+    File.write('./people.json', JSON.pretty_generate(@people))
+    File.write('./rentals.json', JSON.pretty_generate(@rented))
+  end
+
+  def load(rental)
+    person = @people.filter { |per| per.id == rental[:person_id] }.first
+    book = @books.filter { |b| b.title == rental[:book_title] }.first
+    Rental.new(rental[:date], person, book)
   end
 end

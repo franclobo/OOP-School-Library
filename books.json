@@ -1,0 +1,59 @@
+[
+  {
+    "json_class": "Book",
+    "a": [
+      "Rich Dad Poor Dad",
+      "Robert Kiyosaki",
+      [
+        {
+          "json_class": "Rental",
+          "a": [
+            "16-08-2022",
+            81,
+            "Rich Dad Poor Dad"
+          ]
+        }
+      ]
+    ]
+  },
+  {
+    "json_class": "Book",
+    "a": [
+      "The art of war",
+      "Sun Tzu",
+      [
+
+      ]
+    ]
+  },
+  {
+    "json_class": "Book",
+    "a": [
+      "Da Vinci Code",
+      "Dan Brown",
+      [
+
+      ]
+    ]
+  },
+  {
+    "json_class": "Book",
+    "a": [
+      "Ready Player One",
+      "Ernest Cline",
+      [
+
+      ]
+    ]
+  },
+  {
+    "json_class": "Book",
+    "a": [
+      "Ready Player Two",
+      "Ernest Cline",
+      [
+
+      ]
+    ]
+  }
+]

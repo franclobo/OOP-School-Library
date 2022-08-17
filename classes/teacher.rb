@@ -1,11 +1,10 @@
-require 'json'
 require_relative './person'
 
 class Teacher < Person
   attr_accessor :specialization
 
-  def initialize(age:, specialization:, name: 'Unknow', parent_permission: true)
-    super(age: age, name: name, parent_permission: parent_permission)
+  def initialize(specialization:, **parameters)
+    super(**parameters)
     @specialization = specialization
   end
 
@@ -16,17 +15,15 @@ class Teacher < Person
   def to_json(*args)
     {
       JSON.create_id => self.class.name,
-      'age' => age,
-      'specialization' => specialization,
-      'name' => name,
-      'parent_permission' => @parent_permission,
-      'id' => id
+      'a' => [@specialization, @id, @name, @age, @parent_permission, @rentals]
     }.to_json(*args)
   end
 
-  def self.json_create(teacher)
-    person = new(teacher['age'], teacher['specialization'], teacher['name'], teacher['parent_permission'])
-    person.id = teacher['id']
-    person
+  def self.json_create(object)
+    teacher = new(specialization: object['a'][0], name: object['a'][2], age: object['a'][3],
+                  parent_permission: object['a'][4])
+    teacher.id = object['a'][1]
+    teacher.rentals = object['a'][5]
+    teacher
   end
 end
