@@ -13,5 +13,15 @@
     "date": "11-11-1999",
     "person_id": 35,
     "book": "Ready Player Two"
+  },
+  {
+    "date": "17-08-2022",
+    "person_id": 63,
+    "book": "Ready Player One"
+  },
+  {
+    "date": "17-08-2022",
+    "person_id": 88,
+    "book": "Ready Player Two"
   }
 ]

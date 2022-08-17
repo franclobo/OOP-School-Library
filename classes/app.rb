@@ -152,7 +152,7 @@ class App
   end
 
   # Define the method to create a list of rentals, option 6
-  def list_of_rentals(rentals)
+  def list_of_rentals(_rentals)
     print("Insert person ID: \s")
     id = gets.chomp.to_i
     print("Rentals:\n")

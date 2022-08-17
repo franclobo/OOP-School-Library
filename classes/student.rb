@@ -27,7 +27,6 @@ class Student < Person
   def self.json_create(object)
     student = new(classroom: object['a'][0], name: object['a'][2], age: object['a'][3],
                   parent_permission: object['a'][4])
-    student_id = object['a'][1]
     student.rentals = object['a'][5]
     student
   end
