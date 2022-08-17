@@ -153,15 +153,12 @@ class App
 
   # Define the method to create a list of rentals, option 6
   def list_of_rentals(rentals)
-    puts 'Person ID: '
-    id_select = gets.chomp.to_i
-    puts 'Rentals: '
-    rentals.each_with_index do |rentals, idx|
-      if rentals['person_id'] == id_select
-        puts "#{idx}) Date: #{rentals['date']} ID: #{rentals['person_id']} Book: #{rentals['book']} "
-      end
+    print("Insert person ID: \s")
+    id = gets.chomp.to_i
+    print("Rentals:\n")
+    rented.map do |rental|
+      puts "#{rental['date']}, ID: #{rental['person_id']} Book: \"#{rental['book']}\" " if rental['person_id'] == id
     end
-    puts
   end
 
   def save
