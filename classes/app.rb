@@ -158,7 +158,7 @@ class App
     puts 'Rentals: '
     rentals.each_with_index do |rentals, idx|
       if rentals['person_id'] == id_select
-        puts "#{idx}) Date: #{rentals['date']} ID: #{rentals['person_id']} Book: #{rentals['book_title']} "
+        puts "#{idx}) Date: #{rentals['date']} ID: #{rentals['person_id']} Book: #{rentals['book']} "
       end
     end
     puts
