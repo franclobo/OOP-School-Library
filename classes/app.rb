@@ -15,16 +15,9 @@ class App
 
   def initialize()
     @list = []
-    @books = File.exist?('./books.json') ? JSON.parse(File.read('./books.json'), create_aditions: true) : []
-    @people = File.exist?('./people.json') ? JSON.parse(File.read('./people.json'), create_aditions: true) : []
-    @rented = if File.exist?('./rented.json')
-                JSON.parse(File.read('./rented.json'),
-                           create_aditions: true).map do |rental|
-                  load(rental)
-                end
-              else
-                []
-              end
+    @books = File.exist?('./books.json') ? JSON.parse(File.read('./books.json'), create_additions: true) : []
+    @people = File.exist?('./people.json') ? JSON.parse(File.read('./people.json'), create_additions: true) : []
+    @rented = File.exist?('./rentals.json') ? JSON.parse(File.read('./rentals.json'), create_additions: true) : []
   end
 
   # Select an option
@@ -164,7 +157,7 @@ class App
     id = gets.chomp.to_i
     print("Rentals:\n")
     rented.map do |rental|
-      puts "#{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
+      puts "Date: #{rental['date']}, Person ID: #{rental['person_id']} Book: \"#{rental['book_title']}\" " if rental['person_id'] == id
     end
   end
 
@@ -172,11 +165,5 @@ class App
     File.write('./books.json', JSON.pretty_generate(@books))
     File.write('./people.json', JSON.pretty_generate(@people))
     File.write('./rentals.json', JSON.pretty_generate(@rented))
-  end
-
-  def load(rental)
-    person = @people.filter { |per| per.id == rental[:person_id] }.first
-    book = @books.filter { |b| b.title == rental[:book_title] }.first
-    Rental.new(rental[:date], person, book)
   end
 end
