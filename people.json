@@ -1,0 +1,41 @@
+[
+  {
+    "json_class": "Student",
+    "a": [
+      null,
+      26,
+      "Anne",
+      21,
+      true,
+      [
+        {
+          "date": "17-08-2022",
+          "person_id": 39,
+          "book": "Rich Dad Poor Dad"
+        }
+      ]
+    ]
+  },
+  {
+    "json_class": "Teacher",
+    "a": [
+      "Physics",
+      45,
+      "Charles Xavier",
+      40,
+      null,
+      [
+        {
+          "date": "18-08-2022",
+          "person_id": 81,
+          "book": "The Art of War"
+        },
+        {
+          "date": "19-08-2022",
+          "person_id": null,
+          "book": "Ready Player One"
+        }
+      ]
+    ]
+  }
+]
