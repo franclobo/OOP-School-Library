@@ -146,9 +146,13 @@ class App
     person_num = gets.chomp.to_i
     print("Insert a date [DD-MM-YYYY]: \s")
     date = gets.chomp
-    rental = Rental.new(date, people[person_num], books[book_num])
-    print 'Rental created succesfully'
-    rental
+    if (book_num <= books.length && book_num >= 0) && (person_num <= people.length && person_num >= 0)
+      rental = Rental.new(date, people[person_num], books[book_num])
+      print 'Rental created succesfully'
+      rental
+    else
+      print('Invalid book or person option')
+    end
   end
 
   # Define the method to create a list of rentals, option 6
