@@ -1,0 +1,54 @@
+[
+  {
+    "json_class": "Book",
+    "a": [
+      "Rich Dad Poor Dad",
+      "Robert Kiyozaki",
+      [
+        {
+          "date": "17-08-2022",
+          "person_id": 39,
+          "book": "Rich Dad Poor Dad"
+        }
+      ]
+    ]
+  },
+  {
+    "json_class": "Book",
+    "a": [
+      "The Art of War",
+      "Sun Tzu",
+      [
+        {
+          "date": "18-08-2022",
+          "person_id": 81,
+          "book": "The Art of War"
+        }
+      ]
+    ]
+  },
+  {
+    "json_class": "Book",
+    "a": [
+      "Ready Player One",
+      "Ernest Cline",
+      [
+        {
+          "date": "19-08-2022",
+          "person_id": null,
+          "book": "Ready Player One"
+        }
+      ]
+    ]
+  },
+  {
+    "json_class": "Book",
+    "a": [
+      "Ready Player Two",
+      "Ernest Cline",
+      [
+
+      ]
+    ]
+  }
+]

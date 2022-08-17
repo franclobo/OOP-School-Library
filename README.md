@@ -26,6 +26,14 @@ Imagine that you are the librarian of OOP University, and you need a tool to rec
 
 - LinkedIn: [Francisco Borja](https://www.linkedin.com/in/francisco-borja-lobato/)
 
+## 👤 **Marco Antonio Hincapié Montes**
+
+- GitHub: [@AntonioHincapie](https://github.com/AntonioHincapie)
+
+- Twitter: [@MarcoHincapie](https://twitter.com/MarcoHincapie)
+
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/marco-hincapi%C3%A9-7a76751a3/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!

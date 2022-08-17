@@ -1,4 +1,5 @@
 # Import the modules needed to run the application
+require 'json'
 require_relative './book'
 require_relative './student'
 require_relative './teacher'
@@ -12,10 +13,11 @@ class App
   # Getters and setters
   attr_accessor :people, :books, :rented
 
-  def initialize
-    @books = []
-    @people = []
-    @rented = []
+  def initialize()
+    @list = []
+    @books = File.exist?('./books.json') ? JSON.parse(File.read('./books.json'), create_additions: true) : []
+    @people = File.exist?('./people.json') ? JSON.parse(File.read('./people.json'), create_additions: true) : []
+    @rented = File.exist?('./rentals.json') ? JSON.parse(File.read('./rentals.json'), create_additions: true) : []
   end
 
   # Select an option
@@ -57,7 +59,7 @@ class App
           7 - Exit \n
           ")
       option = gets.chomp.to_i
-      option == 7 ? exit = 1 : select_option(option)
+      option == 7 ? exit = 1 && save : select_option(option)
     end
     print "          Thanks for using the app! \n"
   end
@@ -144,18 +146,28 @@ class App
     person_num = gets.chomp.to_i
     print("Insert a date [DD-MM-YYYY]: \s")
     date = gets.chomp
-    rental = Rental.new(date, people[person_num], books[book_num])
-    print 'Rental created succesfully'
-    rental
+    if (book_num <= books.length && book_num >= 0) && (person_num <= people.length && person_num >= 0)
+      rental = Rental.new(date, people[person_num], books[book_num])
+      print 'Rental created succesfully'
+      rental
+    else
+      print('Invalid book or person option')
+    end
   end
 
   # Define the method to create a list of rentals, option 6
-  def list_of_rentals(rented)
+  def list_of_rentals(_rentals)
     print("Insert person ID: \s")
     id = gets.chomp.to_i
     print("Rentals:\n")
     rented.map do |rental|
-      puts "#{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
+      puts "#{rental['date']}, ID: #{rental['person_id']} Book: \"#{rental['book']}\" " if rental['person_id'] == id
     end
+  end
+
+  def save
+    File.write('./books.json', JSON.pretty_generate(@books))
+    File.write('./people.json', JSON.pretty_generate(@people))
+    File.write('./rentals.json', JSON.pretty_generate(@rented))
   end
 end
